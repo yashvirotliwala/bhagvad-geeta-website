@@ -1,0 +1,296 @@
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+body {
+    background: #f7efdf;
+    color: #422b1b;
+}
+
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 50px;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at center, #fff9ed 0%, #efe0c5 100%);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(194, 129, 47, 0.10), transparent 35%);
+}
+
+.navbar {
+    position: relative;
+    z-index: 3;
+    min-height: 75px;
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e4d3b4;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #422b1b;
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.brand-icon {
+    color: #ad682b;
+    font-size: 29px;
+}
+
+.nav-label {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #8b745c;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    min-height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.book-frame {
+    width: min(100%, 430px);
+    padding: 10px;
+    background: #754624;
+    border-radius: 3px 10px 10px 3px;
+    box-shadow:
+        9px 9px 0 #d4bf9a,
+        18px 22px 40px rgba(57, 35, 19, 0.18);
+    animation: appear 0.7s ease;
+}
+
+.book-inner {
+    min-height: 560px;
+    padding: 35px 20px;
+    border: 1px solid #d9b66e;
+    outline: 1px solid rgba(217, 182, 110, 0.45);
+    outline-offset: -8px;
+    background: linear-gradient(145deg, #603a23, #382116);
+    color: #f8e8c8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.om-symbol {
+    width: 62px;
+    height: 62px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #d9b66e;
+    border-radius: 50%;
+    color: #e6c77e;
+    font-size: 36px;
+    margin-bottom: 22px;
+}
+
+.subtitle {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    color: #dfbf7a;
+}
+
+.book-inner h1 {
+    margin: 18px 0;
+    font-size: clamp(55px, 9vw, 76px);
+    line-height: 0.88;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.ornament {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #e4c276;
+    margin: 10px 0;
+}
+
+.ornament span {
+    width: 40px;
+    height: 1px;
+    background: #d9b66e;
+}
+
+.description {
+    margin: 12px 0 25px;
+    color: #e9d5b1;
+    font-style: italic;
+    font-size: 17px;
+}
+
+.chapter-btn {
+    border: 1px solid #d8b66d;
+    background: #d8b66d;
+    color: #382116;
+    border-radius: 3px;
+    padding: 13px 22px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.chapter-btn span {
+    margin-left: 8px;
+}
+
+.chapter-btn:hover {
+    background: #f2dba6;
+    border-color: #f2dba6;
+    transform: translateY(-2px);
+}
+
+.book-footer {
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #d5b989;
+    margin-top: 27px;
+}
+
+.chapter-area {
+    position: relative;
+    z-index: 2;
+    padding-top: 25px;
+}
+
+.chapter-card {
+    height: 100%;
+    min-height: 130px;
+    padding: 24px 18px;
+    background: #fffaf1;
+    border: 1px solid #e4d3b4;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(57, 35, 19, 0.06);
+    text-align: center;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.chapter-card:hover {
+    transform: translateY(-5px);
+    background: #754624;
+    color: #fff5df;
+}
+
+.chapter-title {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+/* Existing verse cards */
+.chapter-card p {
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+
+/* Chapter screen is hidden until Explore Chapters is clicked */
+.chapter-area {
+    display: none;
+}
+
+/* Keep chapter content above the background overlay */
+#chapterContainer {
+    position: relative;
+    z-index: 2;
+}
+
+/* Verse cards should be readable */
+#chapterContainer .chapter-card {
+    color: #422b1b;
+    background: #fffaf1;
+    border: 1px solid #e4d3b4;
+    margin-bottom: 15px;
+    overflow-wrap: anywhere;
+}
+
+#chapterContainer .chapter-card:hover {
+    color: #fffaf1;
+    background: #754624;
+}
+
+#chapterContainer .chapter-card p {
+    line-height: 1.8;
+}
+
+#chapterContainer h3 {
+    color: #422b1b;
+    text-align: center;
+    padding: 20px;
+}
+
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .brand {
+        font-size: 20px;
+    }
+
+    .nav-label {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .book-inner {
+        min-height: 510px;
+        padding: 30px 14px;
+    }
+
+    .book-inner h1 {
+        font-size: 62px;
+    }
+
+    .description {
+        font-size: 15px;
+    }
+
+    .chapter-area {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
